@@ -6,7 +6,7 @@
     android:orientation="horizontal"
     android:layout_margin="10dp">
 
-    <android.support.v7.widget.AppCompatCheckBox
+    <CheckBox
         android:id="@+id/cbIsDone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

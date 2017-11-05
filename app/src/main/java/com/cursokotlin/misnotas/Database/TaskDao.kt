@@ -1,8 +1,6 @@
 package com.cursokotlin.misnotas.Database
 
-import android.arch.persistence.room.Dao
-import android.arch.persistence.room.Insert
-import android.arch.persistence.room.Query
+import android.arch.persistence.room.*
 
 /**
  * Created by aristidesguimeraorozco on 21/10/17.
@@ -16,7 +14,13 @@ interface TaskDao {
     fun addTask(taskEntity : TaskEntity):Long
 
     @Query("SELECT * FROM task_entity where id like :arg0")
-    fun getTaskById(id: Long): MutableList<TaskEntity>
+    fun getTaskById(id: Long): TaskEntity
+
+    @Delete
+    fun deleteTask(taskEntity: TaskEntity):Int
+
+    @Update
+    fun updateTask(taskEntity: TaskEntity):Int
 
 
 }
