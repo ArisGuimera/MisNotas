@@ -12,7 +12,6 @@ import com.cursokotlin.misnotas.MisNotasApp
 import com.cursokotlin.misnotas.R
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.doAsync
-import org.jetbrains.anko.toast
 import org.jetbrains.anko.uiThread
 import java.util.*
 

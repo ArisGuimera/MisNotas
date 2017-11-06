@@ -40,7 +40,7 @@ class TasksAdapter(
 
         fun bind(task: TaskEntity) {
             tvTask.text = task.name
-            (cbIsDone as Checkable).isChecked = task.isDone
+            cbIsDone.isChecked = task.isDone
         }
     }
 }
