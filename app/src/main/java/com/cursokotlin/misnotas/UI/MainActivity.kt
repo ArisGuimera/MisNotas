@@ -68,10 +68,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun deleteTask(position: Int){
+    fun deleteTask(task: TaskEntity){
         doAsync {
-            MisNotasApp.database.taskDao().deleteTask(tasks[position])
-            tasks.removeAt(position)
+            val position = tasks.indexOf(task)
+            MisNotasApp.database.taskDao().deleteTask(task)
+            tasks.remove(task)
             uiThread {
 //                toast("delete ${tasks[position].name}")
                 adapter.notifyItemRemoved(position)

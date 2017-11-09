@@ -16,13 +16,11 @@ import com.cursokotlin.misnotas.R
 class TasksAdapter(
         val tasks: List<TaskEntity>,
         val checkTask: (TaskEntity) -> Unit,
-        val deleteTask: (Int) -> Unit) : RecyclerView.Adapter<TasksAdapter.ViewHolder>() {
+        val deleteTask: (TaskEntity) -> Unit) : RecyclerView.Adapter<TasksAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = tasks[position]
-        holder.bind(item)
-        holder.cbIsDone.setOnClickListener{checkTask(item)}
-        holder.itemView.setOnClickListener { deleteTask(position) }
+        holder.bind(item, checkTask, deleteTask)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -38,9 +36,11 @@ class TasksAdapter(
         val tvTask = view.findViewById<TextView>(R.id.tvTask)
         val cbIsDone = view.findViewById<CheckBox>(R.id.cbIsDone)
 
-        fun bind(task: TaskEntity) {
+        fun bind(task: TaskEntity, checkTask: (TaskEntity) -> Unit, deleteTask: (TaskEntity) -> Unit) {
             tvTask.text = task.name
             cbIsDone.isChecked = task.isDone
+            cbIsDone.setOnClickListener{checkTask(task)}
+            itemView.setOnClickListener { deleteTask(task) }
         }
     }
 }
